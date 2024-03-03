@@ -43,9 +43,9 @@
             <!-- JavaScript goes here -->
 
 //Excersize 1
-			document.write("<b><i>\"if I had nine hours to chop down a tree, I'd spend the first six sharpening my ax.\"</b></i>");
+			document.write("<b><i>\"if I had nine hours to chop down a tree, I&#x2019;d spend the first six sharpening my ax.\"</b></i>");
 			document.write("<br>");
-			document.write("<i>-- Abraham Lincoln</i>");
+			document.write("<i>&minus;&minus; Abraham Lincoln</i>");
 
 			document.write("<br>");
 //Excersize 2
@@ -62,12 +62,14 @@
 		//	} else {
 		//		location.href = "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/appCodeName";
 		//	}
+		// can also use navigator.href="http://mozilla.org" then go console and chekc navigator.href
 // Excersize 4
 	//		if(confirm("Are you a student?")){
 	//			document.write("Welcome student");
 	//		} else {
 	//			document.write("Sorry, this page is for students only")
 	//		}
+	// teacher exampe if (confirm)("Are you a student?")==true) otherwise same
 
 // Excersize 5
 			document.write('<img src="https://media.giphy.com/media/3o6ozhxFlr4Ung40RG/giphy.gif" alt="Gif image">');
@@ -77,8 +79,9 @@
 				"http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", 
 				"http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg"
 			];	
-			var randomValue = Math.floor(Math.random()*3);
-			document.write('<img src="'+images[randomValue]+'">');			
+			var randomValue = Math.round(Math.random()*2);
+			
+			document.images[0].src = images[randomValue];
 			
 		</script>
 	</body>

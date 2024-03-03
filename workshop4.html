@@ -3,10 +3,10 @@
 	<head>
 		<title>Workshop 4</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="css/styles.css">		
 	</head>
 	<body class="ws4">
-		<h1>Workshop 4: DOM Scripting</h1>
+		<h1 id="heading">Workshop 4: DOM Scripting</h1>
 		<hr />
 		<p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the lecture-material as a reference guide side by side these exercises. It might also be a good idea to save the lines of code you write during the exercises for later use. </p>
 
@@ -15,8 +15,8 @@
 		<p>&nbsp;Below you will see three buttons. Edit the source code and add an onClick-events to these buttons. Use Developer Console to find the </p>
 		<p>
 		  <button onclick="changeHeading();">Button 1</button>
-		  <button onclick="secondButton">Button 2</button>
-		  <button onclick="">Button 3</button>
+		  <button onclick="secondButton()">Button 2</button>
+		  <button onclick="thirdButtonAction()">Button 3</button>
 		</p>
 
 		<ul>
@@ -41,7 +41,7 @@
 			</label>
 			<br>
 			<label>
-				<input type="checkbox" name="CheckboxGroup1" value="3" id="CheckboxGroup1_2"> 
+				<input onchange="surprise()" type="checkbox" name="CheckboxGroup1" value="3" id="CheckboxGroup1_2"> 
 				<span id="surpise">Surprise</span>
 			</label>
 		</p>
@@ -60,7 +60,7 @@
 				<li>When you have accomplished the above, change the image (id=&quot;carimage&quot;) below based on the users choice on the pulldown menu below. Find appropriate images from the web.
 			</ul>
 		  <p>Select a new car from the list.</p>
-		  <select name="mySelect" id="mySelect" onchange="">
+		  <select name="mySelect" id="mySelect" onchange="fireOnchange()">
 			<option value="BMW">BMW         
 			<option value="Audi">Audi
 			<option value="Mercedes">Mercedes
@@ -68,7 +68,7 @@
 		  </select>
 		  <br>
 		  <br>
-		<img alt="" onmouseover="" onmouseout="" style="left: 0px; opacity: 1;" src="http://cdn.bmwblog.com/wp-content/uploads/2015/11/BMW-2-Series-Gran-Coupe-Rendering.jpg" width="400" id="carimage"/>
+		<img alt="" onmouseover="addBorder()" onmouseout="deleteBorder()" style="left: 0px; opacity: 1;" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg1.kakaku.k-img.com%2Fimages%2Fproductimage%2Ffullscale%2FK0001125679.jpg&f=1&nofb=1&ipt=cedf5cb6d950ded1ebad4d680e2b379789af8dfd0a269985c31555a2f1d7e340&ipo=images" width="400" id="carimage"/>
 		<hr/>
 		<h2>Exercise 4: Moving things around</h2>
 		<ul>
@@ -148,7 +148,129 @@
 			</li>
 			<li dir="ltr">How would you replace the contents only on the ones with the word &lsquo;Select&rsquo; in them?</li>
 		</ul>
+
+		<script>
+			function changeHeading(){
+			var x = document.getElementById("heading");
+			x.innerHTML="Modified Heading!";
+			}
+			function secondButton(){
+				var h2s = document.getElementsByTagName("h2");
+				h2s[1].style.fontFamily = "'Lucida Console', 'Courier New', monospace";
+				h2s[1].style.fontSize="10px";
+				h2s[1].style.color="white";
+				h2s[1].style.backgroundColor="black";				
+			}
+			function thirdButtonAction(){
+				let newItem = document.createElement("p");
+       			newItem.innerHTML = "<i><b>\"Lorem ipsum</b> dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit.\"</i>";
+       			newItem.setAttribute("id","newData");
+      			document.body.appendChild(newItem);
+				var newPlace = document.getElementsByTagName("p");
+				newPlace[3].appendChild(newItem);
+
+				document.body.style.backgroundColor="lightgray";
+
+			}
+			function hide(){
+				var me = document.getElementById("me");				
+				me.style.display = "none";
+				}
+			function show(){
+				var me = document.getElementById("me");
+				me.style.display="block";
+			}
+			function surprise(){
+				var sur = document.getElementsByClassName("surprise");
+				for(i=0;i<sur.length;i++){
+					sur[i].style.fontSize="20px";					
+				}
+			}
+			function fireOnchange(){
+				var elementSelected = document.getElementById("mySelect");
+				var valueSelected = elementSelected.value;
+				alert(valueSelected);
+				var carImage = document.getElementById("carimage");
+				switch(valueSelected){
+					case "BMW":
+						carImage.src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.cars.cz%2Fmeta%2Fimages%2FcarSigns%2FBMW.jpg&f=1&nofb=1&ipt=bd52b3606a6fff094f4333f9bc293b1c128d6e58286e2ee72ac72719ebd25fe0&ipo=images";
+						break;
+					case "Audi":
+						carImage.src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.c_JnLcZFrS2Hw2n_XuUCswAAAA%26pid%3DApi&f=1&ipt=3f358e20afc602420f7319afddc2896f17d1b1edcc26875bccb1ac85f251f159&ipo=images";
+						break;
+					case "Mercedes":
+						carImage.src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D100063772482005&f=1&nofb=1&ipt=77aecc5811e027cebe9ff8a6d4dd900fb51e322a9b67fa7bdc926e9f944e202d&ipo=images";
+						break;
+					case "Volvo":
+						carImage.src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.jazelc.com%2Fuploads%2Fvolvocarswesthouston%2Fvolvo_logo2.png&f=1&nofb=1&ipt=c71b89e0164d1e225636c1caa202c2748198a24d130f98635008a95eee7bc83d&ipo=images";
+						
+				}
+			}
+			function addBorder(){
+				var element = document.getElementById("carimage");
+				element.style.border="2px solid red";
+			}
+			function deleteBorder(){
+				var element = document.getElementById("carimage");
+				element.style.border="none";
+			}
+			function changePosition(){
+				var carimage = document.getElementById("carimage");
+				carimage.style.left="200px";
+				carimage.style.top="500px";			
+			}
+			/*THIS CODE MOVES THE PICTURE TO THE LEFT AND THEN COMES BACK FROM THE LEFT
+			var currentPosition = 0;
+			var screenWidth = window.innerWidth;
+			function doMove(){
+				var carImage = document.getElementById("carimage");
+				var imageWidth = carImage.offsetWidth; // get width of image
+				currentPosition += 100;
+				if (currentPosition >= screenWidth) {
+					currentPosition = -imageWidth;
+				} 
+				carImage.style.left = currentPosition+ "px";
+					
+			}
+			*/
+			var currentPosition = 0;
+			var screenWidth = window.innerWidth;
+			var imageWidth=document.getElementById("carimage").offsetWidth;
+			var direction = 1;
+			function doMove(){
+				currentPosition += 50 * direction;
+				// check right side of screen
+				if (currentPosition >= screenWidth - imageWidth){
+					direction = -1; //change direction to move left
+					//check if its left
+				} if(currentPosition <= 0){
+					direction = 1; //change direction to move right
+				}
+				document.getElementById("carimage").style.left = currentPosition + "px";					
+			}
+			function fadeOut(){
+				var car = document.getElementById("carimage");
+				car.style.opacity-=0.1;
+			}
+			function remove(){
+				const car = document.getElementById("carimage");
+				car.remove();
+			}
+			function insertRows(){
+				var table = document.getElementById("data");
+				var row =table.insertRow(-1);
+				var cell1 = row.insertCell(0);
+				var cell2=row.insertCell(1);
+				var cell3=row.insertCell(2);
+				cell1.innerHTML = document.getElementById("textfield").value;
+				cell2.innerHTML= document.getElementById("textfield2").value;
+				cell3.innerHTML=document.getElementById("textfield3").value;
+			}
+
+		</script>
+	
 	</body>
+	
 </html>
 
 
