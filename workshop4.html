@@ -25,6 +25,7 @@
 			<li>The third button should append the following text paragraph after the <strong>4th paragraph tag &lt;p&gt;</strong> on the page (without overwriting the current content). Change the background of the entire page as well. Note: The Lorem ipsum text should be in italics. It should also add a logo image of some sort after the text.<br>
 			<br>
 			<strong id="lorem"><em>&quot;Lorem ipsum</em></strong><em> dolor sit amet, consectetuer   adipiscing elit. Sed posuere interdum sem. Quisque ligula eros   ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam   vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget   velit. &quot;</em></li>
+			
 		</ul>
 		<hr/>
 		<h2>Exercise 2: DOM Traversing using ID's and classes</h2>
@@ -167,9 +168,10 @@
        			newItem.setAttribute("id","newData");
       			document.body.appendChild(newItem);
 				var newPlace = document.getElementsByTagName("p");
-				newPlace[3].appendChild(newItem);
+				newPlace[3].appendChild(newItem);				
 
 				document.body.style.backgroundColor="lightgray";
+
 
 			}
 			function hide(){
@@ -216,6 +218,7 @@
 			}
 			function changePosition(){
 				var carimage = document.getElementById("carimage");
+				carimage.style.position="relative";
 				carimage.style.left="200px";
 				carimage.style.top="500px";			
 			}

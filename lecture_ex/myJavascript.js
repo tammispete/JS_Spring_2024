@@ -25,3 +25,31 @@ function showXY(e){
     var coords = "X coords: " + x + ", <br> Y Coords: " +y;
     document.getElementById("coordinates").innerHTML=coords;
 }
+function validateForm(){
+    var fname = document.forms["myForm"]["fname"].value;
+    var lname = document.forms.myForm.lname.value;
+
+    if(fname==null || fname=="" || fname.length < 3 ){
+        document.forms.myForm.fname.style.borderColor = "red";
+        document.getElementById("feedback").innerHTML = "<b>Please fill correctly</b>";
+        return false;
+    } else {
+        document.forms.myForm.fname.style.borderColor = "lightgray";
+        document.getElementById("feedback").innerHTML= "";
+        return true;
+    }
+}
+
+var x = document.getElementById("myFieldset");
+x.style.display = "none";
+
+    function showExtraFields(){
+        var y = document.getElementById("myFieldset");
+        var t = document.getElementById("comments").value;
+        if (t=true){
+            y.style.display="block";
+        } else if (t=false){
+            y.style.display="none";
+        }
+       
+    }
