@@ -35,21 +35,19 @@ function validateForm(){
         return false;
     } else {
         document.forms.myForm.fname.style.borderColor = "lightgray";
-        document.getElementById("feedback").innerHTML= "";
+        document.getElementById("feedback").innerHTML= "";        
         return true;
     }
 }
 
+// fieldsetissä on HTML sivulle kirjoitettu se display=none.
 var x = document.getElementById("myFieldset");
-x.style.display = "none";
-
-    function showExtraFields(){
-        var y = document.getElementById("myFieldset");
-        var t = document.getElementById("comments").value;
-        if (t=true){
-            y.style.display="block";
-        } else if (t=false){
-            y.style.display="none";
+    function showExtraFields(){       
+        var checkbox = document.getElementById("comments");
+        if (checkbox.checked){
+            x.style.display="block";
+        } else {
+            x.style.display="none";
         }
        
     }
