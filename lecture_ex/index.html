@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do</title>
+    <script>
+        function validateAndInsertRows() {
+        event.preventDefault(); // Prevent form submission by default
+
+        var isValid = validateForm(); // calls the function validateForm that checks that there is something written in the field
+
+    if (isValid) {
+        // create a new row
+        var table = document.getElementById("data");
+        var row = table.insertRow(-1);
+        var cell1 = row.insertCell(0);
+        var toDoItem = document.getElementById("textfield").value;
+        cell1.innerHTML = toDoItem;
+
+        // create a new button to move the row to done
+        var removeButton = document.createElement("button");
+        removeButton.textContent = "Done";
+
+        removeButton.onclick = function() {
+            var row = this.parentNode.parentNode; // Get the row containing the clicked button
+            var doneColumn = document.getElementsByTagName('td')[1]; // Get the second column (index 1) in the row
+            doneColumn.appendChild(row); // Append the row to the "Done" column
+            this.parentNode.removeChild(this); // Remove the button
+        };
+
+        var cell2 = row.insertCell(1); // Insert a new cell for the "Done" button
+        cell2.appendChild(removeButton); // Add the "Done" button to the cell
+
+        document.getElementById("todoFeedback").innerHTML = ""; // Clear any previous feedback
+        document.getElementById("textfield").style.borderColor = ""; // Reset border color
+    }
+}
+
+function validateForm() {
+    var toDoItem = document.getElementById('textfield').value;
+    var todoFeedback = document.getElementById("todoFeedback");    
+    if (toDoItem === '') {
+        todoFeedback.innerHTML = "Please write something to add, do not add an empty space";
+        document.getElementById("textfield").style.borderColor = "red";
+        return false;
+    }
+
+    // If validation passes, clear any previous feedback and return true
+    todoFeedback.innerHTML = "";
+    document.getElementById("textfield").style.borderColor = "";
+    return true;
+}
+
+
+
+    </script>
+</head>
+<body>
+
+<h1> To Do List</h1>
+
+<label for="textfield">What needs to be done?</label> 
+    <input type="text" name="textfield" id="textfield"> <span id="todoFeedback"></span>
+    <br>
+<button action="#" onclick="validateAndInsertRows()" name="Insert" id="Insert" value="Insert" >Add</button>
+
+<table id="data" class="display">
+    <thead>
+        <tr>
+            <th>To do</th>
+            <th>Done</th>        
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td id="myRow"></td>
+        </tr> 
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>
+<button id="delete" onclick="deleteItems()">Delete All Done Items</button>
+
+</body>
+</html>

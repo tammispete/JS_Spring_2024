@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+    <script src="storage.js"></script>
+
+</head>
+<body>
+    <h1>Let's use LocalStorage</h1>
+
+    <label for="fname">Firstname:</label><br>
+    <input type="text" id="fname"><br>
+    <label for="lname">Lastname:</label><br>
+    <input type="text" id="lname"><br>
+
+    <div id="storage_place"></div>
+
+    <p>
+        <button type="button" onclick="saveData()">Save</button>
+    </p>
+    <p>
+        <button type="button" onclick="showData()">Show</button>
+    </p>
+    <p>
+        <button type="button" onclick="deleteData()">Delete</button>
+    </p>
+
+    <label for="delNumber">Give a number: </label>
+    <input type="number" id="delNumber">
+    
+</body>
+</html>

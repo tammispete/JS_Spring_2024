@@ -34,12 +34,12 @@ function calculateForm(){
         cost = 25;
     } 
     if(years > 1){
-        cost *= 0.8;
+        cost *= 0.8;        
     }
 
-    if(years > 4){
+    if(years >= 5){
         cost -= 5;
-        document.getElementById("surprise").innerHTML="5 years or more! Thank you! You got $5 off!";
+        document.getElementById("surprise").innerHTML="5 years or more! Thank you! You got 20% discount and $5 off!";
     } else {
         document.getElementById("surprise").innerHTML = "";
     }
