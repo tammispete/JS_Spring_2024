@@ -76,7 +76,7 @@ function showData() {
     if (doneCounterElement) {
         doneCounterElement.innerHTML = "<p>Done tasks: " + doneCounter + "</p>";
     }
-     // Mark items as done using the indicesToMarkAsDone array
+     // Mark items as done using the indicesToMarkAsDone array TRIED TO FIGURE OUT DONE ONLOAD ISSUE
      itemToDone(indicesToMarkAsDone);
     
 }
@@ -116,8 +116,7 @@ function deleteData() {
 }
 
 function itemToDone(index) {
-    var allItems = JSON.parse(localStorage.getItem("toDoList"));
-    var todoItem = allItems[index].todoItem;
+    var allItems = JSON.parse(localStorage.getItem("toDoList"));    
 
     // Find the todo item element by its index and the button element with the same index
     var todoItemElement = document.getElementById("todoItem_" + index);    
@@ -137,6 +136,7 @@ function itemToDone(index) {
         var doneCounterElement = document.getElementById("doneCounter");
         if (doneCounterElement) {
             doneCounterElement.innerHTML = "<p>Done tasks: " + ++doneCounter +"</p>";
+            
         // hide button
         var ButtonElement = document.getElementById("button_"+index)
         if(ButtonElement){
