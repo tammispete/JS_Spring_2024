@@ -117,7 +117,7 @@ table.display {
 .ws8 img {
     width: 100px;
 }
-#jsondata, #rawdata, #weatherdata {
+#jsondata, #rawdata, #weatherdata, #tabledata {
     border: 1px solid black;
     padding: 10px;
 }
@@ -138,3 +138,5 @@ table.display {
     height: auto;
     border: 0;
 }
+
+
